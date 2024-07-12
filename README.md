@@ -9,7 +9,7 @@ catkin_make -DCMAKE_BUILD_TYPE=Release
 tips:There may be compilation errors in ROS messages, please try to compile them again multiple times.
 ```
 
-# 2.run
+# 2.Run
 ```
 //new term
 cd almost_finished_code_2024_7_1/
