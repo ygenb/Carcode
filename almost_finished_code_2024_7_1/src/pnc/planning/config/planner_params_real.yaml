@@ -1,0 +1,98 @@
+# Map Params
+sensor_type:                 0   # 0 for global map, 1 for camera, 2 for lidar, 3 for pcd
+resolution:                  0.1
+inflate_size:                0
+map_topic:                   '/gridmap'
+inf_map_topic:               '/gridmap_inflate'
+# map_path:                     'NO USE'   # set wrong path and try to subscribe simualtion map
+# x_length:                    80.0        # points out of the map will be ignored
+# y_length:                    80.0
+# z_length:                    3.0
+  # camera 
+  # lidar  
+local_x:                     30.0    # set this 3.0x larger than in the FASTLIO
+local_y:                     30.0   
+local_z:                     3.0
+origin_x:                    -15.0
+origin_y:                    -15.0
+origin_z:                    -0.3
+prob_hit_log:                1.2
+prob_miss_log:               -0.4
+clamp_min_log:               -2.0
+clamp_max_log:               2.0
+min_occupancy_log:           1.39
+lidar_range:                 30.0
+max_ray_length:              20.0
+min_ray_length:              0.0
+p_min:                       -199
+p_max:                       220
+p_hit:                       62
+p_mis:                       62
+p_occ:                       139
+p_def:                       -199
+
+# Control
+N:                           40
+dt:                          0.05
+ 
+# some params are shared by  mapping and planning
+# control tolerence error
+replan_error_d:              1.0
+replan_error_theta:          0.5
+
+# Planning 
+replan_rate:                 20
+traj_piece_duration:         1.5
+traj_res:                    16
+dense_traj_res:              32
+
+wei_sta_obs:                 5000.0
+wei_dyn_obs:                 20000.0
+wei_feas:                    500.0
+wei_sqrvar:                  500.0
+wei_time:                    500.0
+dyn_obs_clearance:           0.4
+half_margin:                 0.10  # 0.15
+
+max_phidot:                  10000.0
+max_forward_vel:             0.5
+max_forward_acc:             0.5
+max_forward_cur:             0.3  
+
+max_backward_vel:            0.5
+max_backward_acc:            0.5
+max_backward_cur:            0.3
+
+max_latacc:                  5.0
+
+max_nonsv:                   0.25
+GearOpt:                     true
+lbfgs_memsize:               256
+lbfgs_past:                  3
+lbfgs_delta:                 0.0001
+mini_T:                      0.1
+
+
+# Hybrid Astar Search Params
+horizon:                    50
+yaw_resolution:             0.3
+lambda_heu:                 5.0
+allocate_num:               100000
+check_num:                  5
+max_search_time:            1.0
+traj_forward_penalty:       1.0
+traj_back_penalty:          2.5
+traj_gear_switch_penalty:   15.0
+traj_steer_penalty:         0.5
+traj_steer_change_penalty:  0.0
+step_arc:                   0.9
+checkl:                     0.2
+max_nonsv:                  0.25
+map_size_x:                 1000  # whats this, same to x_length?
+map_size_y:                 1000
+map_resl:                   0.3
+max_frontend_forward_vel:   0.5
+max_frontend_forward_acc:   0.5
+max_frontend_backward_vel:  0.5
+max_frontend_backward_acc:  0.5
+max_frontend_cur:           0.5

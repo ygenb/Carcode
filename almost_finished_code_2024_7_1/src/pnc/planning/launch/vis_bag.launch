@@ -1,0 +1,19 @@
+<launch>
+
+    <node name="rviz" pkg="rviz" type="rviz"
+        args="-d $(find planning)/config/rviz_config_real.rviz"> 
+    </node>
+
+    <node name="mapping_vis_node" pkg="mapping" type="mapping_vis_node" output="screen">
+        <remap from="~gridmap" to="/gridmap"/>
+        <remap from="~gridmap_inflate" to="/gridmap_inflate"/>
+    </node>
+
+
+    <node pkg="odom_visualization" name="odom_visualization" type="odom_visualization" output="screen">
+		<remap from="~odom" to="/Imu_propagate" />    
+		<!-- <remap from="~odom" to="/Odometry" />     -->
+        <param name="robot_scale" value="0.16"/> <!-- hunter 0.8m / audi ~5m -->
+    </node>
+
+</launch>

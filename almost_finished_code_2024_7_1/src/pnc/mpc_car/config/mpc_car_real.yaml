@@ -1,0 +1,24 @@
+
+# Control
+controller:                 1        # 1 for nmpc, 2 for pid, 3 for lqr
+# nMPC & LQR params
+MPC_N:                      40
+MPC_dt:                     0.05
+desired_v:                  0.8 
+ll:                         0.60854     # ll of the car
+rho:                        0.0         # J = (x-x_r)^2+ (y-y_r)^2 + rho * (phi-phi_r)^2
+rho2:                       2.0       
+rhoN:                       1.0
+v_max:                      3.0         # lower and upper bound
+a_max:                      1.0
+delta_max:                  0.32
+ddelta_max:                 0.3       # i dont know
+delay:                      0.400       # ctrl delay of velocity
+delay_steer:                0.200       # ctrl delay of steer angle
+# PID params
+kp_v:                       3.0
+ki_v:                       0.0
+kd_v:                       0.1
+kp_phi:                     1.0
+ki_phi:                     0.0
+kd_phi:                     0.0

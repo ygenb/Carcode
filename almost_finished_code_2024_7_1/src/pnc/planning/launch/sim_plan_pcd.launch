@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+    <!-- load all parameters -->
+    <rosparam command="load" file="$(find planning)/config/planner_params_pcd.yaml"/>  
+
+    <node name="rviz" pkg="rviz" type="rviz" output="screen"
+        args="-d $(find planning)/config/rviz_config_pcd.rviz"> 
+    </node>
+
+    <node name="planning_node" pkg="planning" type="plan_node" output="screen"/>
+
+    <node name="mapping_vis_node" pkg="mapping" type="mapping_vis_node" output="screen">
+        <remap from="~gridmap" to="/gridmap"/>
+        <remap from="~gridmap_inflate" to="/gridmap_inflate"/>
+    </node>
+
+    <!--
+    <include file="$(find car_simulator)/launch/car_simulator.launch"/>
+
+    <node pkg="odom_visualization" name="odom_visualization" type="odom_visualization" output="screen">
+		<remap from="~odom" to="/odom" />
+        <param name="color/a" value="1.0"/>    
+        <param name="color/r" value="0.0"/>        
+        <param name="color/g" value="0.0"/>        
+        <param name="color/b" value="1.0"/>       
+        <param name="covariance_scale" value="100.0"/>       
+        <param name="robot_scale" value="1.0"/>
+    </node>
+
+    <node pkg="mpc_car" type="mpc_car" name="car_controller" output="screen">
+        <rosparam file="$(find mpc_car)/config/mpc_car.yaml"/>
+        <param name="dt" value="$(arg MPC_dt)"/>
+        <param name="N" value="$(arg MPC_N)"/>  
+        <remap from="~odom" to="/odom"/>
+        <remap from="~car_cmd" to="car_cmd"/>  
+        <remap from="~car_traj" to="/controller/trajectory"/>
+    </node>
+    -->
+
+</launch>

@@ -1,0 +1,33 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/cooly-1/zw_ws/use/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/cooly-1/zw_ws/use/src/pnc/utils/DecompROS/decomp_ros_utils/include/**",
+        "/home/cooly-1/zw_ws/use/src/LIO-SLAM-main/LIO/FAST_LIO/include/**",
+        "/home/cooly-1/zw_ws/use/src/vehicle/hunter_ros/hunter_base/include/**",
+        "/home/cooly-1/zw_ws/use/src/pnc/local_sensing/include/**",
+        "/home/cooly-1/zw_ws/use/src/pnc/mapping/include/**",
+        "/home/cooly-1/zw_ws/use/src/pnc/mpc_car/include/**",
+        "/home/cooly-1/zw_ws/use/src/LIO-SLAM-main/LIO/ouster-ros/include/**",
+        "/home/cooly-1/zw_ws/use/src/pnc/planning/include/**",
+        "/home/cooly-1/zw_ws/use/src/pnc/utils/pose_utils/include/**",
+        "/home/cooly-1/zw_ws/use/src/pnc/utils/uav_utils/include/**",
+        "/home/cooly-1/zw_ws/use/src/vehicle/ugv_sdk/include/**",
+        "/home/cooly-1/zw_ws/use/src/pnc/utils/vehicle_params/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-arm64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

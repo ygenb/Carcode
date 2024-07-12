@@ -1,0 +1,44 @@
+# Map Params
+sensor_type:                0   # 0 for global map, 1 for camera, 2 for lidar
+resolution:                 0.1
+inflate_size:               0
+map_topic:                  '/gridmap'
+inf_map_topic:              '/gridmap_inflate'
+  # global map
+# map_path:                    'NO USE'   # set wrong path and try to subscribe simualtion map
+map_path:                    '/home/zhiwei/data/scans_0728.pcd'   # set wrong path and try to subscribe simualtion map
+x_length:                   80.0        # points out of the map will be ignored
+y_length:                   80.0
+z_length:                   3.0
+  # camera
+  # lidar 
+local_x:                    50.0
+local_y:                    50.0   
+lidar_range:                50.0
+
+
+# Map Visualization
+
+# Hybrid Astar Search Params
+horizon:                    50
+yaw_resolution:             0.3
+lambda_heu:                 5.0
+allocate_num:               100000
+check_num:                  5
+max_search_time:            1.0
+traj_forward_penalty:       1.0
+traj_back_penalty:          2.5
+traj_gear_switch_penalty:   15.0
+traj_steer_penalty:         0.5
+traj_steer_change_penalty:  0.0
+step_arc:                   0.9
+checkl:                     0.2
+max_nonsv:                  0.25
+map_size_x:                 1000  # whats this, same to x_length?
+map_size_y:                 1000
+map_resl:                   0.3
+max_frontend_forward_vel:   5.0
+max_frontend_forward_acc:   8.0
+max_frontend_backward_vel:  2.0
+max_frontend_backward_acc:  4.0
+max_frontend_cur:           1.0

@@ -1,0 +1,60 @@
+<launch>
+
+    <!-- fake map -->
+    <node pkg ="map_generator" name ="map_generator_easy" type ="map_generator_easy.py" output ="log" respawn="true" >
+        <!-- <param name="map/x_size" value="$(arg map_size_x)"/>
+        <param name="map/y_size" value="$(arg map_size_y)"/>
+        <param name="map/z_size" value="$(arg map_size_z)"/> -->
+        <param name="map/resolution" value="0.05"/>
+        <param name="map/add_floor" value="false"/>
+        <param name="map/add_ceiling" value="false"/>
+        <param name="sensing/rate" value="1.0"/>
+        <param name="all_map_topic" value="/global_cloud"/>
+    </node>
+
+    <node name="rviz" pkg="rviz" type="rviz"
+        args="-d $(find planning)/config/rviz_config.rviz"> 
+    </node>
+
+    <rosparam command="load" file="$(find planning)/config/planner_params.yaml"/>  
+    <node name="planning_node" pkg="planning" type="plan_node" output="screen">
+        <remap from="sim_cloud" to="/global_cloud"/>
+        <remap from="goal" to="/move_base_simple/goal"/>
+        <remap from="ctrl" to="/controller/trajectory"/>
+    </node>
+
+    <node name="mapping_vis_node" pkg="mapping" type="mapping_vis_node" output="screen">
+        <remap from="~gridmap" to="/gridmap"/>
+        <remap from="~gridmap_inflate" to="/gridmap_inflate"/>
+    </node>
+
+    <!-- car simulator -->
+    <node pkg="nodelet" type="nodelet" name="manager" args="manager" output="screen">
+        <param name="num_worker_threads" value="4"/>
+    </node>
+    <node pkg="nodelet" type="nodelet" name="car_simulator" args="load car_simulator/Nodelet manager" output="screen">
+        <param name="l" value="0.60854"/>
+        <param name="x" value="-1.0"/>
+        <param name="y" value="5.0"/>
+        <param name="phi" value="3.14"/>
+        <param name="v" value="0.0"/>
+        <param name="delay" value="0.125"/>
+        <remap from="~odom" to="odom"/>
+        <remap from="~car_cmd" to="car_cmd"/>
+    </node>
+
+    <node pkg="odom_visualization" name="odom_visualization" type="odom_visualization" output="screen">
+		<remap from="~odom" to="/odom" />    
+        <param name="robot_scale" value="0.16"/> <!-- hunter 0.8m / audi ~5m -->
+    </node>
+
+    <node pkg="mpc_car" type="mpc_car" name="car_controller" output="screen">
+        <rosparam file="$(find mpc_car)/config/mpc_car.yaml"/>
+        <param name="dt" value="0.05"/>
+        <param name="N" value="40"/>
+        <remap from="~odom" to="/odom"/>
+        <remap from="~car_cmd" to="car_cmd"/>  
+        <remap from="~car_traj" to="/controller/trajectory"/>
+    </node>
+
+</launch>
